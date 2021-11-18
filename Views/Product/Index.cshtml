@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Ecommercial_mvc.Models.Product>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-5 g-4 mt-5">
+
+    @foreach (var item in Model)
+    {
+    <div class="col text-dark">
+        <div  class="card my-3 text-dark card-product" style="height:400px;">
+            <img src="@Html.DisplayFor(modelItem => item.Image)" class="h-50 p-4" alt="@Html.DisplayFor(modelItem => item.Name)">
+            <div class="card-body d-flex flex-column">
+                <div>
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text lh-sm fw-light">@Html.DisplayFor(modelItem => item.ShortDescription)</p>
+                </div>
+                <div class="mt-auto align-items-center p-2">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="my-auto text-dark">@Html.DisplayFor(modelItem => item.Price) kr</h5>
+
+                    </div>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success btn-rounded">Läs mer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
